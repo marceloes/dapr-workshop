@@ -47,6 +47,10 @@ Open the `src` folder in this repo in VS Code. Then open the [Dapr service invoc
 
 To leverage step-by-step instructions to achieve the goals, open the [step-by-step instructions](step-by-step.md).
 
+## Unit tests
+
+Run the Unit tests in the `test/Assignment02` folder to see if you have correctly stood up & modified the Dapr services. Open each test project and execute `dotnet test`.
+
 ## Next assignment
 
 Once you've finished this assignment, stop all the running processes and close all the terminal windows in VS Code. Now proceed to the next assignment.
