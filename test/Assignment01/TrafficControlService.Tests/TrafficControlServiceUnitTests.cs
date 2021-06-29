@@ -28,7 +28,7 @@ namespace TrafficControlService.Tests
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
             }            
 
-            Assert.True(httpResponseMessage.IsSuccessStatusCode); 
+            Assert.True(httpResponseMessage.IsSuccessStatusCode, httpResponseMessage.ReasonPhrase); 
         }
 
         [Fact]
@@ -48,7 +48,7 @@ namespace TrafficControlService.Tests
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
             }            
 
-            Assert.True(httpResponseMessage.IsSuccessStatusCode); 
+            Assert.True(httpResponseMessage.IsSuccessStatusCode, httpResponseMessage.ReasonPhrase); 
         }
     }
 }
