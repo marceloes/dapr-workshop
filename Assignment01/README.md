@@ -83,6 +83,20 @@ At this point, the Vehicle Registration microservice is up and running correctly
 
 1. Start the service using `dotnet run` in the terminal window.
 
+Now you can test whether you can call the FineCollectionService. You can both test this by running the provided unit tests or by hitting the endpoint yourself.
+
+### Run Unit Tests
+
+1. Open a new VS Code window and open the `test/Assignment01/FineCollectionService` folder.
+1. Open the terminal window in VS Code.
+
+   > You can open it from the **Terminal** menu item on the top nav menu bar or by using the hotkey ``Ctrl-Shift-` `` (Windows) or ``Shift-Ctrl-` `` (macOS).
+1. In the terminal window, run the tests `dotnet test`
+
+   > If you get an error here, you may not have started the service, may have changed the default ports, etc
+
+### Test Manually
+
 1. Open the file `src/FineCollectionService/test.http` in the VS Code (file) Explorer. The request in this file simulates sending a detected speeding-violation to the FineCollectionService.
 
 1. Click on `Send request` in the file to send a request to the API.
@@ -102,6 +116,20 @@ At this point, both the Vehicle Registration and Fine Collection microservices a
 1. Open another **new** terminal window in VS Code and set the current folder to `src/TrafficControlService`.
 
 1. Start the service using `dotnet run`.
+
+Now you can test whether you can call the TrafficControlService. You can both test this by running the provided unit tests or by hitting the endpoint yourself.
+
+### Run Unit Tests
+
+1. Open a new VS Code window and open the `test/Assignment01/TrafficControlService` folder.
+1. Open the terminal window in VS Code.
+
+   > You can open it from the **Terminal** menu item on the top nav menu bar or by using the hotkey ``Ctrl-Shift-` `` (Windows) or ``Shift-Ctrl-` `` (macOS).
+1. In the terminal window, run the tests `dotnet test`
+
+   > If you get an error here, you may not have started the service, may have changed the default ports, etc
+
+### Test Manually
 
 1. Open the `test.http` file in the TrafficControl project folder in VS Code.
 

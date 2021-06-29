@@ -2,10 +2,8 @@ using System;
 using Xunit;
 using System.Threading.Tasks;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text.Json;
-using System.IO;
 using Xunit.Sdk;
+using System.Text;
 
 namespace TrafficControlService.Tests
 {
@@ -14,30 +12,43 @@ namespace TrafficControlService.Tests
         private static readonly HttpClient client = new HttpClient();
 
         [Fact]
-        public void Test1()
+        public async Task EntryCamTest()
         {
             client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
 
-            Task<Stream> streamTask;
+            HttpContent httpContent = new StringContent(@"{ ""lane"": 1, ""licenseNumber"": ""XT-346-Y"", ""timestamp"": ""2020-09-10T10:38:47"" }", 
+                                                        Encoding.UTF8, 
+                                                        "application/json");
+
+            HttpResponseMessage httpResponseMessage;
             try {
-                streamTask = client.GetStreamAsync("http://127.0.0.1:6002/vehicleinfo/KZ-49-VX");
+                httpResponseMessage = await client.PostAsync("http://127.0.0.1:6000/entrycam", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
-            }
+            }            
 
-            VehicleInfo actualResult;
+            Assert.True(httpResponseMessage.IsSuccessStatusCode); 
+        }
 
+        [Fact]
+        public async Task ExitCamTest()
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+
+            HttpContent httpContent = new StringContent(@"{ ""lane"": 1, ""licenseNumber"": ""XT-346-Y"", ""timestamp"": ""2020-09-10T10:38:52"" }", 
+                                                        Encoding.UTF8, 
+                                                        "application/json");
+
+            HttpResponseMessage httpResponseMessage;
             try {
-                actualResult = await JsonSerializer.DeserializeAsync<VehicleInfo>(await streamTask, new JsonSerializerOptions{ PropertyNameCaseInsensitive = true});
+                httpResponseMessage = await client.PostAsync("http://127.0.0.1:6000/exitcam", httpContent);
             }
             catch (Exception ex) {
-                throw new XunitException($"Unable to parse result. Error: ${ex.Message}");
-            }
+                throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
+            }            
 
-            Assert.True(streamTask.IsCompletedSuccessfully);
+            Assert.True(httpResponseMessage.IsSuccessStatusCode); 
         }
     }
 }

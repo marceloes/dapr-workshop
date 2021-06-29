@@ -12,7 +12,7 @@ namespace FineCollectionService.Tests
     {
         private static readonly HttpClient client = new HttpClient();
         [Fact]
-        public async Task CollectFine()
+        public async Task CollectFineTest()
         {
             client.DefaultRequestHeaders.Accept.Clear();
 
