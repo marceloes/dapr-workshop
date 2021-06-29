@@ -14,13 +14,29 @@ In this assignment, you'll run the Traffic Control application to make sure ever
 
    > You can open it from the **Terminal** menu item on the top nav menu bar or by using the hotkey ``Ctrl-Shift-` `` (Windows) or ``Shift-Ctrl-` `` (macOS).
 
-1. In the terminal window, set your current folder to `src/VehicleRegistrationService`.
+1. In the terminal window, set your current folder to `src/VehicleRegistrationService`. 
+
+   > `cd VehicleRegistrationService`
 
 1. Start the service by typing in the `dotnet run` command in the terminal window.
 
    > If you receive an error here, please double-check whether or not you have installed all the [prerequisites](README.md#Prerequisites) for the workshop!  
 
-Now you can test whether you can call the VehicleRegistrationService. You can do this using a browser, CURL or some other HTTP client. But there is a convenient way of testing RESTful APIs directly from VS Code (using the REST Client extension VS Code):
+Now you can test whether you can call the VehicleRegistrationService. You can both test this by running the provided unit tests or by hitting the endpoint yourself.
+
+### Run Unit Tests
+
+1. Open a new VS Code window and open the `test/Assignment01/VehicleRegistrationService` folder.
+1. Open the terminal window in VS Code.
+
+   > You can open it from the **Terminal** menu item on the top nav menu bar or by using the hotkey ``Ctrl-Shift-` `` (Windows) or ``Shift-Ctrl-` `` (macOS).
+1. In the terminal window, run the tests `dotnet test`
+
+   > If you get an error here, you may not have started the service, may have changed the default ports, etc
+
+### Test Manually
+
+You can do this using a browser, CURL or some other HTTP client. But there is a convenient way of testing RESTful APIs directly from VS Code (using the REST Client extension VS Code):
 
 1. Open the file `src/VehicleRegistrationService/test.http` in VS Code using the (file) Explorer feature. The request in this file simulates retrieving the vehicle and owner information for a certain license-number.
 
