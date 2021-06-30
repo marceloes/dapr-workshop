@@ -93,7 +93,7 @@ First you're going to change the code so it calls the Dapr sidecar:
 
 1. With the VehicleRegistrationService up and running, you'll now start the FineCollectionService:
 
-   <img src="../img/start-finecollection.png" style="padding-top: 25px;" /> 
+   <img src="img/start-finecollection-assignment02.png" style="padding-top: 25px;" /> 
 
 1. Open a **new** terminal window in VS Code and make sure the current folder is set to `src/FineCollectionService`.
 
@@ -117,7 +117,7 @@ Now you're going to test the application from end-to-end:
 
 1. First, start the TrafficControlService:
 
-   <img src="../img/start-trafficcontrol.png" style="padding-top: 25px;" /> 
+   <img src="img/start-trafficcontrol-assignment02.png" style="padding-top: 25px;" /> 
 
 1. Open a **new** terminal window in VS Code and set the current folder to `src/TrafficControlService`.
 
@@ -131,7 +131,7 @@ Now you're going to test the application from end-to-end:
 
 1. Finally, you're going start the traffic simulation service:
 
-   <img src="../img/start-simulator.png" style="padding-top: 25px;" /> 
+   <img src="img/start-simulator-assignment02.png" style="padding-top: 25px;" /> 
 
 1. Open a **new** terminal window in VS Code and set the current folder to `src/Simulation`.
 

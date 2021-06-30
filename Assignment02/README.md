@@ -35,7 +35,7 @@ To complete this assignment, you must achieve the following goals:
 
 This assignment targets the operations labeled as **number 1** in the end-state setup:
 
-<img src="../img/dapr-setup.png" style="zoom: 67%;" />
+<img src="img/dapr-setup-assignment02.png" style="zoom: 67%;" />
 
 There are two ways to approach this assignment: DIY (do it yourself) or with step-by-step instructions.
 
