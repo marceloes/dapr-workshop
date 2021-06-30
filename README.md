@@ -1,4 +1,4 @@
-# Dapr hands-on
+# Dapr on Azure hands-on
 
 This repository contains several hands-on assignments that will introduce you to Dapr. You will start with a simple ASP.NET Core application that several microservices. In each assignment, you will change a part of the application so it works with Dapr (or "rub some Dapr on it" as Donovan Brown would say). You will be working with the following Dapr building blocks:
 
@@ -55,16 +55,16 @@ It's important to understand that all calls between services are direct, synchro
 
 ### End-state with Dapr applied
 
-Completing the lab assignments, you will evolve the application architecture to work with Dapr. The following diagram shows the end-state:
+Completing the lab assignments, you will evolve the application architecture to work with Dapr in Azure. The following diagram shows the end-state:
 
 <img src="img/dapr-setup.png" alt="Dapr setup" style="zoom:67%;" />
 
 1. For request/response type communication between the FineCollectionService and the VehicleRegistrationService, the **service invocation** building block is used.
-1. For sending speeding violations to the FineCollectionService, the **publish and subscribe** building block is used. RabbitMQ is used as message broker.
-1. For storing the state of a vehicle, the **state management** building block is used. Redis is used as state store.
-1. Fines are sent to the owner of a speeding vehicle by email. For sending the email, the Dapr SMTP **output binding** is used.
-1. The Dapr **input binding** for MQTT is used to send simulated car info to the TrafficControlService. Mosquitto is used as MQTT broker.
-1. The FineCollectionService needs credentials for connecting to the smtp server and a license key for a fine calculator component. It uses the **secrets management** building block with the local file component to get the credentials and the license key.
+1. For sending speeding violations to the FineCollectionService, the **publish and subscribe** building block is used. Azure Service Bus is used as message broker.
+1. For storing the state of a vehicle, the **state management** building block is used. Azure Redis Cache is used as state store.
+1. Fines are sent to the owner of a speeding vehicle by email. For sending the email, an Azure Logic App using HTTP **output binding** is used.
+1. The Dapr **input binding** for MQTT is used to send simulated car info to the TrafficControlService. Azure IoT Hub is used as MQTT broker.
+1. The FineCollectionService needs credentials for connecting to the smtp server and a license key for a fine calculator component. It uses the **secrets management** building block with Azure Key Vault to get the credentials and the license key.
 
 The sequence diagram below shows how the solution will work with Dapr:
 
@@ -73,33 +73,6 @@ The sequence diagram below shows how the solution will work with Dapr:
 > If during the workshop you are lost on what the end result of an assignment should be, come back to this README to see the end result.
 
 ## Getting started with the workshop
-
-### Prerequisites
-
-Make sure you have the following prerequisites installed on your machine:
-
-- Git ([download](https://git-scm.com/))
-- .NET 5 SDK ([download](https://dotnet.microsoft.com/download/dotnet/5.0))
-- Visual Studio Code ([download](https://code.visualstudio.com/download)) with at least the following extensions installed:
-  - [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
-  - [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
-- Docker for desktop ([download](https://www.docker.com/products/docker-desktop))
-- Dapr CLI and Dapr runtime ([instructions](https://docs.dapr.io/getting-started/install-dapr-selfhost/))
-
-All scripts in the instructions are Powershell scripts. If you're working on a Mac, it is recommended to install Powershell for Mac:
-
-- Powershell for Mac ([instructions](https://docs.microsoft.com/nl-nl/powershell/scripting/install/installing-powershell-core-on-macos?view=powershell-7.1))
-
-### Versions
-
-The workshop has been tested with the following versions:
-
-| Attribute            | Details |
-| -------------------- | ------- |
-| Dapr runtime version | v1.0.0  |
-| Dapr.NET SDK version | v1.0.0  |
-| Dapr CLI version     | v1.0.0  |
-| Platform             | .NET 5  |
 
 ### Instructions
 
@@ -145,17 +118,6 @@ Before we start, please give a big hand to original authors of this workshop:
 
 Both Edwin and Sander are Principal Architects at InfoSupport in the Netherlands. Both are Microsoft MVPs, avid community presenters, and co-authors of the Microsoft eBook [Dapr for .NET Developers](https://docs.microsoft.com/dotnet/architecture/dapr-for-net-developers/). 
 
+### Ready? 
 
-#### Get started
-
-Now it's time for you to get your hands dirty and start with the first assignment:
-
-1. Clone the Github repository to a local folder on your machine:
-
-   ```console
-   git clone https://github.com/robvet/dapr-workshop.git
-   ```
-
-2. Before starting with the assignments, I suggest you review  the code of the different services. You can open the `src` folder in this repo in VS Code. All folders used in the assignments are specified relative to the root of the folder where you have cloned the dapr-workshop repository.
-
-3. Go to [assignment 1](Assignment01/README.md).
+Go to [assignment 0](Assignment0/README.md).
