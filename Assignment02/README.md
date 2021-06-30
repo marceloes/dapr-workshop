@@ -49,7 +49,8 @@ To leverage step-by-step instructions to achieve the goals, open the [step-by-st
 
 ## Unit tests
 
-Run the Unit tests in the `test/Assignment02` folder to see if you have correctly stood up & modified the Dapr services. Open each test project and execute `dotnet test`.
+Run the Unit tests in the `test/Assignment02` folder to see if you have correctly stood up & modified the Dapr services. After modifying the services, make sure each one is 
+running. Finally, open each test project and execute `dotnet test`.
 
 ## Next assignment
 
