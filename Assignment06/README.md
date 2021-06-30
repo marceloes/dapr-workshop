@@ -8,7 +8,7 @@ In this assignment you'll focus on Dapr input bindings. The following diagram de
 
 <img src="img/input-binding.png" style="zoom: 50%;padding-top: 40px;" />
 
-For this hands-on assignment, you will add an input binding leveraging the Dapr binding building block. In the previous assignment, you implemented a Dapr input binding. For detailed information, read the [introduction to this building block](https://docs.dapr.io/developing-applications/building-blocks/bindings/) in the Dapr documentation and the [bindings chapter](https://docs.microsoft.com/dotnet/architecture/dapr-for-net-developers/bindings) in the [Dapr for .NET developers](https://docs.microsoft.com/dotnet/architecture/dapr-for-net-developers/) guidance eBook.
+For this hands-on assignment, you will add an input binding leveraging the Dapr binding building block. In the previous assignment, you implemented a Dapr output binding. For detailed information, read the [introduction to this building block](https://docs.dapr.io/developing-applications/building-blocks/bindings/) in the Dapr documentation and the [bindings chapter](https://docs.microsoft.com/dotnet/architecture/dapr-for-net-developers/bindings) in the [Dapr for .NET developers](https://docs.microsoft.com/dotnet/architecture/dapr-for-net-developers/) guidance eBook.
 
 
 ## Assignment goals
@@ -30,6 +30,11 @@ First open the `src` folder in this repo in VS Code. Then open the [Bindings doc
 ## Step by step instructions
 
 To get step-by-step instructions to achieve the goals, open the [step-by-step instructions](step-by-step.md).
+
+## Unit tests
+
+Run the Unit tests in the `test/Assignment06` folder to see if you have correctly stood up & modified the Dapr services. After modifying the services, make sure each one is 
+running. Finally, open each test project and execute `dotnet test`.
 
 ## Next assignment
 
