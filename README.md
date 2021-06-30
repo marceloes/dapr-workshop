@@ -1,4 +1,4 @@
-# Dapr hands-on
+# Dapr on Azure hands-on
 
 This repository contains several hands-on assignments that will introduce you to Dapr. You will start with a simple ASP.NET Core application that several microservices. In each assignment, you will change a part of the application so it works with Dapr (or "rub some Dapr on it" as Donovan Brown would say). You will be working with the following Dapr building blocks:
 
@@ -55,16 +55,16 @@ It's important to understand that all calls between services are direct, synchro
 
 ### End-state with Dapr applied
 
-Completing the lab assignments, you will evolve the application architecture to work with Dapr. The following diagram shows the end-state:
+Completing the lab assignments, you will evolve the application architecture to work with Dapr in Azure. The following diagram shows the end-state:
 
 <img src="img/dapr-setup.png" alt="Dapr setup" style="zoom:67%;" />
 
 1. For request/response type communication between the FineCollectionService and the VehicleRegistrationService, the **service invocation** building block is used.
-1. For sending speeding violations to the FineCollectionService, the **publish and subscribe** building block is used. RabbitMQ is used as message broker.
-1. For storing the state of a vehicle, the **state management** building block is used. Redis is used as state store.
-1. Fines are sent to the owner of a speeding vehicle by email. For sending the email, the Dapr SMTP **output binding** is used.
-1. The Dapr **input binding** for MQTT is used to send simulated car info to the TrafficControlService. Mosquitto is used as MQTT broker.
-1. The FineCollectionService needs credentials for connecting to the smtp server and a license key for a fine calculator component. It uses the **secrets management** building block with the local file component to get the credentials and the license key.
+1. For sending speeding violations to the FineCollectionService, the **publish and subscribe** building block is used. Azure Service Bus is used as message broker.
+1. For storing the state of a vehicle, the **state management** building block is used. Azure Redis Cache is used as state store.
+1. Fines are sent to the owner of a speeding vehicle by email. For sending the email, an Azure Logic App using HTTP **output binding** is used.
+1. The Dapr **input binding** for MQTT is used to send simulated car info to the TrafficControlService. Azure IoT Hub is used as MQTT broker.
+1. The FineCollectionService needs credentials for connecting to the smtp server and a license key for a fine calculator component. It uses the **secrets management** building block with Azure Key Vault to get the credentials and the license key.
 
 The sequence diagram below shows how the solution will work with Dapr:
 
