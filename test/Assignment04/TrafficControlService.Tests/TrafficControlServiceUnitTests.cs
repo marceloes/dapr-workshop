@@ -81,28 +81,24 @@ namespace TrafficControlService.Tests
                 new MediaTypeWithQualityHeaderValue("application/json")
             );
 
-            Task<Stream> streamTask;
+            Stream streamTask;
             try {
-                streamTask = client.GetStreamAsync($"http://localhost:3600/v1.0/state/statestore/{LICENSE_NUMBER}");
+                streamTask = await client.GetStreamAsync($"http://localhost:3600/v1.0/state/statestore/{LICENSE_NUMBER}");
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
             }
             
-            Assert.True(streamTask.IsCompletedSuccessfully);
-
-            Assert.NotEqual(0, streamTask.Result.Length);
-
             VehicleState actualResult;
 
             try {
-                actualResult = await JsonSerializer.DeserializeAsync<VehicleState>(await streamTask);
+                actualResult = await JsonSerializer.DeserializeAsync<VehicleState>(streamTask);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to parse result. Error: {ex.Message}");
             }         
 
-            Assert.Equal(ENTRY_TIMESTAMP, actualResult.EntryTimestamp.ToString());
+            Assert.Equal(ENTRY_TIMESTAMP, actualResult.EntryTimestamp.ToString("s"));
         }
 
         [Fact]
@@ -132,28 +128,24 @@ namespace TrafficControlService.Tests
                 new MediaTypeWithQualityHeaderValue("application/json")
             );
 
-            Task<Stream> streamTask;
+            Stream streamTask;
             try {
-                streamTask = client.GetStreamAsync($"http://localhost:3600/v1.0/state/statestore/{LICENSE_NUMBER}");
+                streamTask = await client.GetStreamAsync($"http://localhost:3600/v1.0/state/statestore/{LICENSE_NUMBER}");
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
             }
             
-            Assert.True(streamTask.IsCompletedSuccessfully);
-
-            Assert.NotEqual(0, streamTask.Result.Length);
-
             VehicleState actualResult;
 
             try {
-                actualResult = await JsonSerializer.DeserializeAsync<VehicleState>(await streamTask);
+                actualResult = await JsonSerializer.DeserializeAsync<VehicleState>(streamTask);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to parse result. Error: {ex.Message}");
             }         
 
-            Assert.Equal(EXIT_TIMESTAMP, actualResult.ExitTimestamp.ToString());
+            Assert.Equal(EXIT_TIMESTAMP, actualResult.ExitTimestamp.ToString("s"));
         }
     }
 }
