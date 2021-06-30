@@ -37,5 +37,5 @@ Make sure you have at least the following versions installed. This workshop has 
 
 3. Review  the source code of the different services. You can open the `src` folder in this repo in VS Code. All folders used in the assignments are specified relative to the root of the folder where you have cloned the dapr-workshop repository.
 
-4. Go to [assignment 1](Assignment01/README.md).
+4. Go to [assignment 1](../Assignment01/README.md).
 
