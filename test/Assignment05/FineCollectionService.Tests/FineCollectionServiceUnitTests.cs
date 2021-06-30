@@ -155,7 +155,7 @@ namespace FineCollectionService.Tests
             }
 
             Assert.Equal(1, actualResult.RootElement.GetArrayLength());
-            Assert.Contains("speeding ticket", actualResult.RootElement[0].GetProperty("subject").GetString());
+            Assert.Contains("Central Fine Collection Agency", actualResult.RootElement[0].GetProperty("html").GetString());
         }
     }
 }

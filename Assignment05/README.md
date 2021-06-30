@@ -29,6 +29,11 @@ First open the `src` folder in this repo in VS Code. Then open the [Bindings doc
 
 To get step-by-step instructions to achieve the goals, open the [step-by-step instructions](step-by-step.md).
 
+## Unit tests
+
+Run the Unit tests in the `test/Assignment05` folder to see if you have correctly stood up & modified the Dapr services. After modifying the services, make sure each one is 
+running. Finally, open each test project and execute `dotnet test`.
+
 ## Next assignment
 
 Congratulations, you have now completed assignment 5!
