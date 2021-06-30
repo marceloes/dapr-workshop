@@ -87,6 +87,10 @@ namespace FineCollectionService.Tests
         [Fact]
         public async Task OutgoingSMTPTest() {
             const string MAILDEV_URL = "http://localhost:1080/email";
+
+            //************************************
+            // clear out existing messages
+            //************************************
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json")
@@ -102,6 +106,9 @@ namespace FineCollectionService.Tests
 
             Assert.True(httpResponseMessage.IsSuccessStatusCode, httpResponseMessage.ReasonPhrase);
 
+            //************************************
+            // send violation
+            //************************************
             client.DefaultRequestHeaders.Accept.Clear();
 
             var data = new SpeedingViolation{
@@ -137,6 +144,14 @@ namespace FineCollectionService.Tests
 
             Assert.True(httpResponseMessage.IsSuccessStatusCode, httpResponseMessage.ReasonPhrase);
 
+            //************************************
+            // check if email was sent
+            //************************************
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json")
+            );
+            
             Stream streamTask;
             try {
                 streamTask = await client.GetStreamAsync($"{MAILDEV_URL}");
