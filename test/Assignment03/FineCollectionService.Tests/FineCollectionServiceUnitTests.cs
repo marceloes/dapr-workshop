@@ -78,8 +78,6 @@ namespace FineCollectionService.Tests
                 throw new XunitException($"Unable to parse result. Error: {ex.Message}");
             }
 
-            Assert.True(streamTask.IsCompletedSuccessfully);
-
             Assert.Equal(1, actualResult.RootElement.GetArrayLength());
             Assert.Equal("pubsub", actualResult.RootElement[0].GetProperty("pubsubname").GetString());
             Assert.Equal("collectfine", actualResult.RootElement[0].GetProperty("topic").GetString());

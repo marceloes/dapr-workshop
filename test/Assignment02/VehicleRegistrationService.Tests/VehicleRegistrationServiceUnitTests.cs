@@ -40,8 +40,6 @@ namespace VehicleRegistrationService.Tests
                 throw new XunitException($"Unable to parse result. Error: {ex.Message}");
             }
 
-            Assert.True(streamTask.IsCompletedSuccessfully);
-
             Assert.Equal(VEHICLE_ID, actualResult.RootElement.GetProperty("vehicleId").GetString());
         }
     }
