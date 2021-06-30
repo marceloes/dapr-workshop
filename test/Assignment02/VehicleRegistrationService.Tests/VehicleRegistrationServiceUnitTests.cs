@@ -23,9 +23,9 @@ namespace VehicleRegistrationService.Tests
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
 
-            Task<Stream> streamTask;
+            Stream streamTask;
             try {
-                streamTask = client.GetStreamAsync($"http://localhost:3602/v1.0/invoke/VehicleRegistrationService/method/vehicleinfo/{VEHICLE_ID}");
+                streamTask = await client.GetStreamAsync($"http://localhost:3602/v1.0/invoke/VehicleRegistrationService/method/vehicleinfo/{VEHICLE_ID}");
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
@@ -34,7 +34,7 @@ namespace VehicleRegistrationService.Tests
             JsonDocument actualResult;
 
             try {
-                actualResult = await JsonSerializer.DeserializeAsync<JsonDocument>(await streamTask);
+                actualResult = await JsonSerializer.DeserializeAsync<JsonDocument>(streamTask);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to parse result. Error: {ex.Message}");

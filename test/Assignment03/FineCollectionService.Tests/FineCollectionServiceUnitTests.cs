@@ -61,9 +61,9 @@ namespace FineCollectionService.Tests
                 new MediaTypeWithQualityHeaderValue("application/json")
             );
 
-            Task<Stream> streamTask;
+            Stream streamTask;
             try {
-                streamTask = client.GetStreamAsync($"http://localhost:3601/v1.0/invoke/FineCollectionService/method/dapr/subscribe");
+                streamTask = await client.GetStreamAsync($"http://localhost:3601/v1.0/invoke/FineCollectionService/method/dapr/subscribe");
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
@@ -72,7 +72,7 @@ namespace FineCollectionService.Tests
             JsonDocument actualResult;
 
             try {
-                actualResult = await JsonSerializer.DeserializeAsync<JsonDocument>(await streamTask);
+                actualResult = await JsonSerializer.DeserializeAsync<JsonDocument>(streamTask);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to parse result. Error: {ex.Message}");
