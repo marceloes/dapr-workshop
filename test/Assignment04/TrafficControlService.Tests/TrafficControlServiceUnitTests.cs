@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Xunit.Sdk;
 using System.Text;
+using System.Net.Http.Headers;
+using System.IO;
+using System.Text.Json;
 
 namespace TrafficControlService.Tests
 {
@@ -49,6 +52,108 @@ namespace TrafficControlService.Tests
             }            
 
             Assert.True(httpResponseMessage.IsSuccessStatusCode); 
+        }
+
+        [Fact]
+        public async Task EntryCamStateStoreTest()
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+
+            const string LICENSE_NUMBER = "XT-346-Y";
+            const string ENTRY_TIMESTAMP = "2020-09-10T10:38:47";
+
+            HttpContent httpContent = new StringContent(String.Concat(@"{ ""lane"": 1, ""licenseNumber"": """, LICENSE_NUMBER, @""", ""timestamp"": """, ENTRY_TIMESTAMP, @""" }"), 
+                                                        Encoding.UTF8, 
+                                                        "application/json");
+
+            HttpResponseMessage httpResponseMessage;
+            try {
+                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/TrafficControlService/method/entrycam", httpContent);
+            }
+            catch (Exception ex) {
+                throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
+            }            
+
+            Assert.True(httpResponseMessage.IsSuccessStatusCode);
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json")
+            );
+
+            Task<Stream> streamTask;
+            try {
+                streamTask = client.GetStreamAsync($"http://localhost:3600/v1.0/state/statestore/{LICENSE_NUMBER}");
+            }
+            catch (Exception ex) {
+                throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
+            }
+            
+            Assert.True(streamTask.IsCompletedSuccessfully);
+
+            Assert.NotEqual(0, streamTask.Result.Length);
+
+            VehicleState actualResult;
+
+            try {
+                actualResult = await JsonSerializer.DeserializeAsync<VehicleState>(await streamTask);
+            }
+            catch (Exception ex) {
+                throw new XunitException($"Unable to parse result. Error: {ex.Message}");
+            }         
+
+            Assert.Equal(ENTRY_TIMESTAMP, actualResult.EntryTimestamp.ToString());
+        }
+
+        [Fact]
+        public async Task ExitCamStateStoreTest()
+        {
+            client.DefaultRequestHeaders.Accept.Clear();
+
+            const string LICENSE_NUMBER = "XT-346-Y";
+            const string EXIT_TIMESTAMP = "2020-09-10T10:38:52";
+
+            HttpContent httpContent = new StringContent(String.Concat(@"{ ""lane"": 1, ""licenseNumber"": """, LICENSE_NUMBER, @""", ""timestamp"": """, EXIT_TIMESTAMP, @""" }"), 
+                                                        Encoding.UTF8, 
+                                                        "application/json");
+
+            HttpResponseMessage httpResponseMessage;
+            try {
+                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/TrafficControlService/method/exitcam", httpContent);
+            }
+            catch (Exception ex) {
+                throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
+            }            
+
+            Assert.True(httpResponseMessage.IsSuccessStatusCode);
+
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json")
+            );
+
+            Task<Stream> streamTask;
+            try {
+                streamTask = client.GetStreamAsync($"http://localhost:3600/v1.0/state/statestore/{LICENSE_NUMBER}");
+            }
+            catch (Exception ex) {
+                throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
+            }
+            
+            Assert.True(streamTask.IsCompletedSuccessfully);
+
+            Assert.NotEqual(0, streamTask.Result.Length);
+
+            VehicleState actualResult;
+
+            try {
+                actualResult = await JsonSerializer.DeserializeAsync<VehicleState>(await streamTask);
+            }
+            catch (Exception ex) {
+                throw new XunitException($"Unable to parse result. Error: {ex.Message}");
+            }         
+
+            Assert.Equal(EXIT_TIMESTAMP, actualResult.ExitTimestamp.ToString());
         }
     }
 }
