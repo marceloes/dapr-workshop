@@ -93,6 +93,8 @@ First, create an input binding for the `/entrycam` operation:
      type: bindings.mqtt
      version: v1
      metadata:
+     - name: consumerID
+       value: "{uuid}"
      - name: url
        value: mqtt://localhost:1883
      - name: topic
@@ -123,6 +125,8 @@ Next, create an input binding for the `/exitcam` operation:
      type: bindings.mqtt
      version: v1
      metadata:
+     - name: consumerID
+       value: "{uuid}"
      - name: url
        value: mqtt://localhost:1883
      - name: topic
