@@ -42,3 +42,10 @@ module aksModule 'aks.bicep' = {
     publicSSHKey: publicSSHKey
   }  
 }
+
+module redisCacheModule 'redisCache.bicep' = {
+  name: 'redisCacheDeploy'
+  params: {
+    longName: longName
+  }  
+}
