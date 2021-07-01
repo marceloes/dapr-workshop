@@ -22,7 +22,7 @@ namespace FineCollectionService.Tests
 
             HttpResponseMessage httpResponseMessage;
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3601/v1.0/invoke/FineCollectionService/method/collectfine", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3601/v1.0/invoke/finecollectionservice/method/collectfine", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");

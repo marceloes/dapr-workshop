@@ -44,7 +44,7 @@ namespace FineCollectionService.Tests
 
             HttpResponseMessage httpResponseMessage;
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3601/v1.0/invoke/FineCollectionService/method/collectfine", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3601/v1.0/invoke/finecollectionservice/method/collectfine", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
@@ -63,7 +63,7 @@ namespace FineCollectionService.Tests
 
             Stream streamTask;
             try {
-                streamTask = await client.GetStreamAsync($"http://localhost:3601/v1.0/invoke/FineCollectionService/method/dapr/subscribe");
+                streamTask = await client.GetStreamAsync($"http://localhost:3601/v1.0/invoke/finecollectionservice/method/dapr/subscribe");
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
@@ -136,7 +136,7 @@ namespace FineCollectionService.Tests
                                                         "application/json");
 
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3601/v1.0/invoke/FineCollectionService/method/collectfine", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3601/v1.0/invoke/finecollectionservice/method/collectfine", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");

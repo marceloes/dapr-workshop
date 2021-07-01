@@ -27,7 +27,7 @@ namespace TrafficControlService.Tests
 
             HttpResponseMessage httpResponseMessage;
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/TrafficControlService/method/entrycam", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/trafficcontrolservice/method/entrycam", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
@@ -47,7 +47,7 @@ namespace TrafficControlService.Tests
 
             HttpResponseMessage httpResponseMessage;
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/TrafficControlService/method/exitcam", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/trafficcontrolservice/method/exitcam", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
@@ -70,7 +70,7 @@ namespace TrafficControlService.Tests
 
             HttpResponseMessage httpResponseMessage;
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/TrafficControlService/method/entrycam", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/trafficcontrolservice/method/entrycam", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");
@@ -117,7 +117,7 @@ namespace TrafficControlService.Tests
 
             HttpResponseMessage httpResponseMessage;
             try {
-                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/TrafficControlService/method/exitcam", httpContent);
+                httpResponseMessage = await client.PostAsync("http://localhost:3600/v1.0/invoke/trafficcontrolservice/method/exitcam", httpContent);
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: ${ex.Message}");

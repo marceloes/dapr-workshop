@@ -25,7 +25,7 @@ namespace VehicleRegistrationService.Tests
 
             Stream streamTask;
             try {
-                streamTask = await client.GetStreamAsync($"http://localhost:3602/v1.0/invoke/VehicleRegistrationService/method/vehicleinfo/{VEHICLE_ID}");
+                streamTask = await client.GetStreamAsync($"http://localhost:3602/v1.0/invoke/vehicleregistrationservice/method/vehicleinfo/{VEHICLE_ID}");
             }
             catch (Exception ex) {
                 throw new XunitException($"Unable to query endpoint. Error: {ex.Message}");
