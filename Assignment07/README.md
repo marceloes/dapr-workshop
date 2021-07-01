@@ -46,6 +46,11 @@ First open the `src` folder in this repo in VS Code. Then open the [Secrets mana
 
 To get step-by-step instructions to achieve the goals, open the [step-by-step instructions](step-by-step.md).
 
+## Unit tests
+
+Run the Unit tests in the `test/Assignment07` folder to see if you have correctly stood up & modified the Dapr services. After modifying the services, make sure each one is 
+running. Finally, open each test project and execute `dotnet test`.
+
 ## Final solution
 
 Congratulations, you have reached the end of the hands-on assignments! If you haven't been able to do all the assignments, go to [this repository](https://github.com/robvet/dapr-workshop-complete) for the end result.
