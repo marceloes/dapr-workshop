@@ -1,7 +1,7 @@
 param longName string
 
 resource redisCache 'Microsoft.Cache/Redis@2019-07-01' = {
-  name: longName
+  name: 'redis-${longName}'
   location: resourceGroup().location
   properties: {
     sku: {

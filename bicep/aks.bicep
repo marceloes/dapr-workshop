@@ -30,6 +30,11 @@ resource aks 'Microsoft.ContainerService/managedClusters@2021-03-01' = {
         ]
       }
     }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: true
+      }
+    }
   }
 }
 

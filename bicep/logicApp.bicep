@@ -1,7 +1,7 @@
 param longName string
 
 resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
-  name: 'l-${longName}'
+  name: 'logic-smtp-${longName}'
   location: resourceGroup().location
   properties: {
     parameters: {
@@ -13,7 +13,7 @@ resource logicApp 'Microsoft.Logic/workflows@2019-05-01' = {
 
       }
       triggers: {
-        
+
       }
       actions: {
 
